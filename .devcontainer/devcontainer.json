@@ -1,0 +1,29 @@
+{
+  "name": "Solana / Rust Dev Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  
+  "features": {
+    // Install Rust for writing Solana programs
+    "ghcr.io/devcontainers/features/rust:1": {
+      "version": "latest"
+    },
+    // Install Node.js for JS/TS client libraries
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts" 
+    }
+  },
+
+  "postCreateCommand": "sh -c \"$(curl -sSfL https://release.solana.com/stable/install)\" && export PATH=\"$HOME/.local/share/solana/install/active_release/bin:$PATH\"",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "serayuzgur.crates",
+        "eamodio.gitlens"
+      ]
+    }
+  },
+
+  "forwardPorts": [8899]
+}
